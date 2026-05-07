@@ -17,29 +17,28 @@ npm install opencode-clipboard-image-paste-wayland
 #   "plugin": ["opencode-clipboard-image-paste-wayland"]
 # }
 
-# 4. Configure tui.json
-# Create ~/.config/opencode/tui.json:
-# {
-#   "$schema": "https://opencode.ai/tui.json",
-#   "keybinds": {
-#     "input_paste_image": "ctrl+shift+v"
-#   }
-# }
-
-# 5. Restart OpenCode
+# 4. Restart OpenCode
 ```
 
 ## Usage
 
 1. Copy image to clipboard
-2. Press `ctrl+shift+v` in OpenCode
-3. Image pastes automatically
+2. Run the `pasteImageFromClipboard` tool
+3. Image is pasted and saved, then you can analyze it
 
 ## Requirements
 
 - Wayland
 - wl-clipboard
 - OpenCode
+- A model that supports vision/image input
+
+Examples of models that support vision:
+- Claude Sonnet 4.6 / Haiku 4.5
+- GPT-5.1 / GPT-5.2
+- Gemini 2.5 Pro / Flash
+- Llama 3.2 Vision
+- Qwen3-VL
 
 ## License
 

@@ -2,60 +2,6 @@ import { type Plugin, tool } from "@opencode-ai/plugin"
 
 export const ClipboardImagePastePlugin: Plugin = async ({ client, $ }) => {
   return {
-    "server.connected": async (input, output) => {
-      try {
-        const homeResult = await $`echo $HOME`
-        const homePath = homeResult.stdout.trim()
-        const configPath = `${homePath}/.config/opencode/tui.json`
-        
-        const exists = await $`test -f ${configPath}`.exitCode === 0
-        
-        let config: Record<string, any> = { 
-          "$schema": "https://opencode.ai/tui.json", 
-          "keybinds": {} 
-        }
-        
-        if (exists) {
-          const result = await $`cat ${configPath}`
-          config = JSON.parse(result.stdout)
-        }
-        
-        if (!config.keybinds) {
-          config.keybinds = {}
-        }
-        
-        if (!config.keybinds.input_paste_image) {
-          config.keybinds.input_paste_image = "ctrl+shift+v"
-          
-          await $`echo '${JSON.stringify(config, null, 2)}' > ${configPath}`
-          
-          await client.app.log({
-            body: {
-              service: "clipboard-image-paste",
-              level: "info",
-              message: "Configured ctrl+shift+v for image pasting"
-            }
-          })
-        } else {
-          await client.app.log({
-            body: {
-              service: "clipboard-image-paste",
-              level: "info",
-              message: "Image paste keybinding already configured"
-            }
-          })
-        }
-      } catch (e) {
-        await client.app.log({
-          body: {
-            service: "clipboard-image-paste",
-            level: "warn",
-            message: `Could not auto-configure tui.json: ${e.message}`
-          }
-        })
-      }
-    },
-
     tool: {
       pasteImageFromClipboard: tool({
         description: "Paste an image from the system clipboard (Wayland). Saves the image and returns the markdown image reference for the AI to read.",
