@@ -1,0 +1,72 @@
+name: Validate Plugin
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Validate TypeScript syntax
+      run: |
+        # Check if plugin.ts exists and is valid TypeScript
+        if [ -f "plugin.ts" ]; then
+          echo "✓ plugin.ts found"
+          
+          # Check for basic syntax issues
+          if grep -q "export const ClipboardImagePastePlugin" plugin.ts; then
+            echo "✓ Plugin export found"
+          else
+            echo "✗ Plugin export missing"
+            exit 1
+          fi
+          
+          if grep -q "server.connected" plugin.ts; then
+            echo "✓ server.connected hook found"
+          else
+            echo "✗ server.connected hook missing"
+            exit 1
+          fi
+          
+          if grep -q "pasteImageFromClipboard" plugin.ts; then
+            echo "✓ pasteImageFromClipboard tool found"
+          else
+            echo "✗ pasteImageFromClipboard tool missing"
+            exit 1
+          fi
+        else
+          echo "✗ plugin.ts not found"
+          exit 1
+        fi
+    
+    - name: Check package.json
+      run: |
+        # Validate package.json structure
+        if [ -f "package.json" ]; then
+          echo "✓ package.json found"
+          
+          if grep -q '"type": "module"' package.json; then
+            echo "✓ Module type correct"
+          else
+            echo "✗ Module type missing"
+            exit 1
+          fi
+        else
+          echo "✗ package.json not found"
+          exit 1
+        fi
+    
+    - name: Check README
+      run: |
+        if [ -f "README.md" ]; then
+          echo "✓ README.md found"
+        else
+          echo "✗ README.md not found"
+          exit 1
+        fi
