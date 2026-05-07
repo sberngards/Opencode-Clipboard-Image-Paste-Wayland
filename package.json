@@ -1,0 +1,34 @@
+{
+  "name": "opencode-clipboard-image-paste-wayland",
+  "version": "1.0.0",
+  "description": "OpenCode plugin to paste images from clipboard on Wayland",
+  "type": "module",
+  "main": "plugin.ts",
+  "types": "plugin.ts",
+  "exports": {
+    ".": {
+      "import": "./plugin.ts"
+    }
+  },
+  "files": [
+    "plugin.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "wayland",
+    "clipboard",
+    "image",
+    "paste"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@opencode-ai/plugin": "latest"
+  }
+}
