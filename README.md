@@ -29,6 +29,12 @@ sudo dnf install wl-clipboard
 
 ### 2. Install the Plugin
 
+Install the plugin from npm:
+
+```bash
+npm install opencode-clipboard-image-paste-wayland
+```
+
 Add to your `opencode.json`:
 
 ```json
