@@ -3,9 +3,11 @@ import { type Plugin, tool } from "@opencode-ai/plugin"
 export const ClipboardImagePastePlugin: Plugin = async ({ client, $ }) => {
   return {
     "server.connected": async (input, output) => {
-      const configPath = `${process.env.HOME}/.config/opencode/tui.json`
-      
       try {
+        const homeResult = await $`echo $HOME`
+        const homePath = homeResult.stdout.trim()
+        const configPath = `${homePath}/.config/opencode/tui.json`
+        
         const exists = await $`test -f ${configPath}`.exitCode === 0
         
         let config: Record<string, any> = { 
