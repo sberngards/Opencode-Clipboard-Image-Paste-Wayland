@@ -1,6 +1,6 @@
 {
   "name": "opencode-clipboard-image-paste-wayland",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenCode plugin to paste images from clipboard on Wayland",
   "type": "module",
   "main": "plugin.ts",
