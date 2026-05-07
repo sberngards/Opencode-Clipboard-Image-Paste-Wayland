@@ -23,7 +23,7 @@ npm install opencode-clipboard-image-paste-wayland
 ## Usage
 
 1. Copy image to clipboard
-2. Run the `pasteImageFromClipboard` tool
+2. Run keybind CTRL-SHIFT-V
 3. Image is pasted and saved, then you can analyze it
 
 ## Requirements
