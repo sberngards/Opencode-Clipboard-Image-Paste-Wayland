@@ -45,7 +45,7 @@ The plugin will automatically configure the keybinding (`ctrl+shift+v`) on start
 ## Usage
 
 1. Take a screenshot or copy an image to your clipboard
-2. Press `ctrl-shift-v` in OpenCode
+2. Press `ctrl+shift+v` in OpenCode
 3. The image will be automatically pasted and available for the AI to analyze
 
 ## How It Works
@@ -83,7 +83,7 @@ The plugin provides:
 - Test with: `wl-paste --list-types` (should show image/*)
 
 ### Keybinding not working
-- Check OpenCode logs for configuration status
+- Check OpenCode logs for the configuration status
 - Verify that the plugin loaded successfully
 - Restart OpenCode after installing the plugin
 
