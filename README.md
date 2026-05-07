@@ -38,12 +38,6 @@ Add to your `opencode.json`:
 }
 ```
 
-Or install locally in your project:
-
-```bash
-bun install opencode-clipboard-image-paste-wayland
-```
-
 ### 3. Restart OpenCode
 
 The plugin will automatically configure the keybinding (`ctrl+shift+v`) on startup.
@@ -60,21 +54,21 @@ The plugin provides:
 
 1. **Automatic Configuration**: On startup, the plugin automatically configures `tui.json` to bind `ctrl+shift+v` to the image paste functionality
 2. **Custom Tool**: `pasteImageFromClipboard` that:
-   - Checks if clipboard contains an image via `wl-paste --type image/png`
+   - Checks if the clipboard contains an image via `wl-paste --type image/png`
    - Saves the image to `.opencode/tmp/clipboard-image-{timestamp}.png`
    - Validates the image size
-   - Returns markdown reference for the AI to read
+   - Returns a markdown reference for the AI to read
    - Logs the operation for debugging
 
 ## Features
 
-- **Zero Configuration**: Automatically sets up keybinding on first run
-- **Automatic detection**: Checks if clipboard contains an image
-- **Instant paste**: Press shortcut and image is pasted automatically
-- **Timestamped files**: Prevents overwriting previous images
-- **Size validation**: Ensures actual image content (> 100 bytes)
-- **Structured logging**: Easy debugging via OpenCode logs
-- **Non-destructive**: Preserves existing keybindings in tui.json
+- **Zero Configuration**: Automatically sets up the keybinding on the first run
+- **Automatic Detection**: Checks if the clipboard contains an image
+- **Instant Paste**: Press the shortcut and the image is pasted automatically
+- **Timestamped Files**: Prevents overwriting previous images
+- **Size Validation**: Ensures actual image content (> 100 bytes)
+- **Structured Logging**: Easy debugging via OpenCode logs
+- **Non-Destructive**: Preserves existing keybindings in `tui.json`
 
 ## Troubleshooting
 
@@ -90,7 +84,7 @@ The plugin provides:
 
 ### Keybinding not working
 - Check OpenCode logs for configuration status
-- Verify the plugin loaded successfully
+- Verify that the plugin loaded successfully
 - Restart OpenCode after installing the plugin
 
 ### "Could not auto-configure tui.json"
@@ -102,25 +96,6 @@ The plugin provides:
 - Check that `.opencode/tmp/` exists and contains the image
 - The image path is relative to your project directory
 - View OpenCode logs for debugging information
-
-## Development
-
-Build the plugin:
-```bash
-bun run build
-```
-
-Watch for changes during development:
-```bash
-bun run dev
-```
-
-Publish to npm:
-```bash
-bun run prepublishOnly
-bun npm login
-npm publish
-```
 
 ## License
 
