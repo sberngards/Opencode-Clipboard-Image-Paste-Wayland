@@ -13,9 +13,9 @@ npm install opencode-clipboard-image-paste-wayland
 
 # 3. Add to opencode.json
 # Add to your opencode.json:
-# {
-#   "plugin": ["opencode-clipboard-image-paste-wayland"]
-# }
+{
+  "plugin": ["opencode-clipboard-image-paste-wayland"]
+}
 
 # 4. Restart OpenCode
 ```
